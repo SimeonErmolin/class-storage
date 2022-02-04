@@ -1,5 +1,5 @@
 class Storage {
-  constructor(key, storageType, defaultValue) {
+  constructor(key, storageType = localStorage, defaultValue) {
     this.key = key;
     this.storageType = storageType;
     this.defaultValue = defaultValue;
@@ -20,17 +20,17 @@ class Storage {
       value += `${val}, `;
     }
 
-    console.log(value);
+    return value;
   }
 
   set(value) {
-    console.log(this.keysList.add(value));
-    this.updateLocal()
+    this.keysList.add(value);
+    this.updateLocal();
   }
 
   clear() {
-    console.log(this.keysList.clear());
-    this.updateLocal()
+    this.keysList.clear();
+    this.updateLocal();
   }
 
   isEmpty() {
@@ -42,12 +42,13 @@ class Storage {
       if (key == this.key) break;
     }
 
-    if (this.storageType.key(index) == null || undefined) {
-      console.log(true)
-    }
+    return (this.storageType.key(index) == null || this.storageType.key(index) == undefined)
   }
 
   updateLocal() {
     this.storageType.setItem(this.key, JSON.stringify([...this.keysList]));
   }
 }
+
+let admin = new Storage('admin');
+console.log(admin.isEmpty())
