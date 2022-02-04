@@ -1,15 +1,15 @@
 class Storage {
-  constructor(key, storageType, dafaultValue) {
+  constructor(key, storageType, defaultValue) {
     this.key = key;
     this.storageType = storageType;
-    this.dafaultValue = dafaultValue;
+    this.defaultValue = defaultValue;
 
     let keysList;
     !storageType.keysList ? keysList = new Set() : keysList = new Set(JSON.parse(storageType.getItem(key)));
     this.keysList = keysList;
 
-    if (dafaultValue) {
-      this.set(dafaultValue)
+    if (defaultValue) {
+      this.set(defaultValue)
     }
   }
 
@@ -36,7 +36,7 @@ class Storage {
   isEmpty() {
     let keys = Object.keys(this.keysList);
     let index = 0;
-    
+
     for (let key of keys) {
       index++;
       if (key == this.key) break;
