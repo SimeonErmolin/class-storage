@@ -49,6 +49,3 @@ class Storage {
     this.storageType.setItem(this.key, JSON.stringify([...this.keysList]));
   }
 }
-
-let admin = new Storage('admin');
-console.log(admin.isEmpty())
