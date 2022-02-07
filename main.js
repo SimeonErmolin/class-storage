@@ -14,13 +14,7 @@ class Storage {
   }
 
   get() {
-    let value = "";
-
-    for (let val of this.keysList) {
-      value += `${val}, `;
-    }
-
-    return value;
+    console.log(this.storageType.getItem(this.key))
   }
 
   set(value) {
